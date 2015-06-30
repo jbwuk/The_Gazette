@@ -17,7 +17,7 @@ n=5616
 #for i in range(561,16753,10):
 for i in range(5311,16753,10):
     scraperwiki.sqlite.save_var('last_page', i)
-    url = "http://www.london-gazette.co.uk/issues/1960-01-01;2012-11-01/exact=licence+to+abstract+water;sort=oldest/start=%s" % i
+    url = "https://www.thegazette.co.uk/insolvency/notice?sort-by=latest-date&categorycode=G405010202+-2&location-distance-1=1&numberOfLocationSearches=1&results-page-size=10" % i
     #html=scraperwiki.scrape(url)
     #root = lxml.html.fromstring(html)  
     root=lxml.html.fromstring(scraperwiki.scrape(url))
@@ -36,7 +36,7 @@ for i in range(5311,16753,10):
             record['page_id']=i
             record['id']=n    
             record['sourceurl']=url
-            record['pdflink']='http://www.london-gazette.co.uk' + a.attrib['href'] + '/page.pdf'
+            record['pdflink']='http://www.thegazette.co.uk' + a.attrib['href'] + '/page.pdf'
             scraperwiki.sqlite.save(['pdflink'], record, 'pdfs')
         
     #print scraperwiki.scrape(url)
